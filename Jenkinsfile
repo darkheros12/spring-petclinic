@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('Test') {
-      steps {
-        echo 'Test'
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Test'
+          }
+        }
+
+        stage('') {
+          steps {
+            catchError(stageResult: 'Error', buildResult: 'Error', message: 'An error as occured')
+          }
+        }
+
       }
     }
 
