@@ -15,9 +15,9 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('Error') {
           steps {
-            catchError(stageResult: 'Error', buildResult: 'Error', message: 'An error as occured')
+            warnError(message: 'An Error as occurred')
           }
         }
 
